@@ -29,9 +29,11 @@ import { setAvatarRoute } from "../utils/APIRoutes";
       const {data}= await axios.post(`${setAvatarRoute}/${user._id}`,{
         image: avatars[selectedAvatar],
       })
+     
       if(data.isSet){
         user.isAvatarImageSet= true;
         user.avatarImage= data.image;
+        console.log(data)
         localStorage.setItem("chat-app-user",JSON.stringify(user));
         navigate('/');
       }else{
@@ -39,7 +41,15 @@ import { setAvatarRoute } from "../utils/APIRoutes";
       }
     }
   };
+  useEffect(()=>{
+   if(localStorage.getItem("chat-app-user")===undefined || !localStorage.getItem("chat-app-user")){
+    navigate("/login")
+   }
+  },[])
   useEffect(() => {
+    if(localStorage.getItem("chat-app-user")===undefined || !localStorage.getItem("chat-app-user")){
+      navigate("/login")
+     }
     const data=[]
     const fetchData = async () => {
       for (let i = 0; i < 4; i++) {
@@ -54,7 +64,7 @@ import { setAvatarRoute } from "../utils/APIRoutes";
     };
   
     fetchData();
-  }, [axios,api]);
+  }, []);
   return (
     <>
       {

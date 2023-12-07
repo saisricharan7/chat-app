@@ -18,7 +18,7 @@ export default function Login() {
     theme: "dark",
   };
   useEffect(() => {
-    if (localStorage.getItem("chat-app-current-user")) {
+    if (localStorage.getItem("chat-app-user")) {
       navigate("/");
     }
   }, []);
@@ -52,8 +52,8 @@ export default function Login() {
       }
       if (data.status === true) {
         localStorage.setItem(
-          "chat-app-current-user",
-          JSON.stringify(data.user)
+          "chat-app-user",
+          JSON.stringify(data)
         );
 
         navigate("/");
@@ -148,7 +148,7 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #997af0;
     }
   }
   span {
