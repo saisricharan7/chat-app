@@ -14,7 +14,7 @@ app.use("/api/auth",userRoutes)
 app.use("/api/messages",messageRoutes)
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect("mongodb+srv://sai_charan:saicharan@cluster0.pu747xs.mongodb.net/chatDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -25,8 +25,8 @@ mongoose
     console.log(err.message);
   });
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
+const server = app.listen(5000, () =>
+  console.log(`Server started on ${5000}`)
 );
 
 const io = socket(server,{
