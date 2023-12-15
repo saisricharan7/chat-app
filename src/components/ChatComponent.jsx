@@ -74,7 +74,7 @@ export default function ChatComponent ({currentChat,currentUser,socket}) {
                     <h3>{currentChat.username}</h3>
                 </div>
             </div>
-            <Logout></Logout>
+            
         </div>
         <div className="chat-messages">
             {messages.length &&

@@ -7,6 +7,7 @@ import Contacts  from '../components/Contacts';
 import Welcome from '../components/Welcome';
 import  ChatComponent  from '../components/ChatComponent';
 import {io} from "socket.io-client";
+import Logout from '../components/Logout';
 
 const Chat = () => {
   const socket = useRef();
@@ -69,6 +70,10 @@ const Chat = () => {
 
   return (
     <Container>
+      <div className='logout'>
+        <Logout></Logout>
+      </div>
+        
         <div className='container'>
           <Contacts contacts={contacts} currentUser={currentUser} changeChat={handleChatChange}></Contacts>
           {
@@ -93,6 +98,11 @@ gap: 1rem;
 background-color: #131324;
 height: 100vh;
 width: 100vw;
+.logout{
+  position:absolute;
+  top:10px;
+  right:10px;
+}
 .container{
   height:85vh;
   width:85vw;
