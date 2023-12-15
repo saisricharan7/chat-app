@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Robo from '../assets/robo.gif';
 
 export default function Welcome({currentUser}) {
-console.log(currentUser)
+
   return (
     <Container>
       <img src={Robo} alt='Robot'></img>

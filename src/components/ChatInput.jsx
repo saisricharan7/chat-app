@@ -67,8 +67,8 @@ const Container=styled.div`
         cursor: pointer;
       }
       .EmojiPickerReact {
-        margin-top:1rem;
         position: absolute;
+        top :-465px;
         background-color: #080420;
         box-shadow: 0 5px 10px #9a86f3;
         border-color: #9a86f3;
