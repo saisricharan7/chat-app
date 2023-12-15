@@ -10,7 +10,7 @@ try{
     }
     const emailCheck = await User.findOne({email});
     if(emailCheck){
-        return res.json({msg:"Email already used",status:false});
+        return res.json({msg:"Email already exists",status:false});
     }
     const hashPassword = await bcrypt.hash(password,10);
     const user= await User.create({
@@ -27,8 +27,16 @@ try{
 
 module.exports.login = async (req, res, next) => {
     try {
-      const { username, password } = req.body;
-      const user = await User.findOne({ username });
+      const { usernameOrEmail, password } = req.body;
+      const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
+      let user;
+      if(isEmail){
+        user= await User.findOne({email:usernameOrEmail});
+      }
+      if(!user){
+        user = await User.findOne({ username:usernameOrEmail });
+      }
+       
       if (!user)
         return res.json({ msg: "Incorrect Username or Password", status: false });
       const isPasswordValid = await bcrypt.compare(password, user.Password);
