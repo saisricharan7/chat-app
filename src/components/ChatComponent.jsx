@@ -12,16 +12,20 @@ export default function ChatComponent ({currentChat,currentUser,socket}) {
     const scrollRef = useRef();
 
     const handleSendMsg=async (msg)=>{
+       console.log(msg,currentUser._id);
+
        await axios.post(sendMessageRoute,{
         from : currentUser._id,
         to: currentChat._id,
         message : msg
        });
-       socket.current.emit("send-msg",{
+      await socket.current.emit("send-msg",{
         to: currentChat._id,
         from:currentUser._id,
         message:msg,
        });
+
+       
 
        const msgs=[...messages];
        msgs.push({fromSelf:true , message:msg});

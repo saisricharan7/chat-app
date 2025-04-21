@@ -20,7 +20,8 @@ import { setAvatarRoute } from "../utils/APIRoutes";
   };
   const [avatars,setAvatars]=useState([]);
   const [isLoading,setIsLoading]=useState(true);
-  const [selectedAvatar,setSelectedAvatar]=useState(undefined)
+  const [selectedAvatar,setSelectedAvatar]=useState(undefined);
+  
   const setProfilePicture = async ()=>{
     if(selectedAvatar===undefined){
       toast.error('please select an avatar',toastOptions)
@@ -64,7 +65,7 @@ import { setAvatarRoute } from "../utils/APIRoutes";
     };
   
     fetchData();
-  }, []);
+  }, [ ]);
   return (
     <>
       {
